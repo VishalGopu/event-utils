@@ -1,0 +1,26 @@
+{
+  "name": "event-utils",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "dev": "corepack pnpm --parallel --filter @event-utils/web --filter @event-utils/api dev",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "typecheck": "corepack pnpm -r typecheck",
+    "test": "corepack pnpm --filter @event-utils/api test",
+    "build": "corepack pnpm -r build",
+    "db:generate": "corepack pnpm --filter @event-utils/api db:generate",
+    "db:migrate": "corepack pnpm --filter @event-utils/api db:migrate",
+    "db:check": "corepack pnpm --filter @event-utils/api db:check"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.25.1",
+    "eslint": "9.25.1",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.31.1"
+  }
+}

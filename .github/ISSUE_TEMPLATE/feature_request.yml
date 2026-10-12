@@ -1,126 +1,24 @@
-name: "🚀 Feature request"
-description: "Propose a feature or module for event-utils. Tell us the event workflow you're solving for — not just the feature."
-title: "[Feature]: <one-line summary>"
-labels: ["feature-request", "triage"]
+name: Feature or task
+description: Propose one deliverable aligned with a phase gate.
+title: "[Task] "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for helping shape event-utils! 🎉
-
-        This platform is built from real club-event workflows, so the **more context you give us, the faster and better we can help**. A feature described without its workflow usually gets bounced back with questions — the ones below are exactly what maintainers need to triage (see the [feature intake process](../blob/main/docs/architecture.md#10-feature-request--build-process)).
-
-        Tips for a great request:
-        - **Describe the problem, not the solution.** We can design the solution together once we understand the pain.
-        - **Think in terms of an event** — a hackathon, a recruitment drive, a workshop. What happens before, during, and after?
-        - If you already have a spec or mockup, link it. If not, don't worry — one will be written *with* you.
-
   - type: textarea
-    id: summary
+    id: outcome
     attributes:
-      label: "One-line summary"
-      description: "What are you asking for, in a single sentence?"
-      placeholder: "e.g. A way for judges to score submissions in multiple rounds"
+      label: Outcome and user workflow
     validations:
       required: true
-
-  - type: dropdown
-    id: category
+  - type: textarea
+    id: criteria
     attributes:
-      label: "What kind of request is this?"
-      options:
-        - "New module (a self-contained feature package)"
-        - "Improvement to an existing module idea"
-        - "Core platform (auth, theming, admin shell, landing page…)"
-        - "Developer experience (tooling, docs, CI, DX)"
-        - "Not sure yet — help me figure it out"
+      label: Acceptance criteria
     validations:
       required: true
-
   - type: textarea
-    id: problem
+    id: dependencies
     attributes:
-      label: "The problem / workflow you're solving"
-      description: |
-        Walk us through the real-world scenario. Who is involved? What happens step by step? Where does the current process hurt?
-        This is the **most important section** — a workflow beats a wishlist every time.
-      placeholder: |
-        e.g. During our hackathon, 12 teams submit projects. Judges currently score on paper.
-        The core team manually averages scores in a spreadsheet, and results get announced late
-        because some judges lose their sheets. During judging we can't answer "which teams has
-        judge X not scored yet?"
-    validations:
-      required: true
-
+      label: Dependencies and phase
   - type: textarea
-    id: users
+    id: write_scope
     attributes:
-      label: "Who would use this?"
-      description: "Which of the platform's roles does this involve? Check all that apply and explain what each of them would do."
-      placeholder: |
-        - [x] Organizers — set up scoring criteria before the event
-        - [x] Judges — score submissions during the event
-        - [x] Participants — see "scored" status after results
-        - [ ] Superadmin / Org admin
-        - [ ] Someone else (describe below)
-    validations:
-      required: true
-
-  - type: textarea
-    id: proposed
-    attributes:
-      label: "Your proposed solution"
-      description: "How do you imagine this working? Screenshots, sketches, and links to similar tools are gold here. If you don't have a solution in mind, that's fine — describe what 'done' looks like instead."
-      placeholder: "e.g. A judging panel where each judge sees only their assigned teams, with a 1–10 scale per criteria…"
-    validations:
-      required: true
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: "Alternatives you've considered"
-      description: "What do clubs do today? (Spreadsheets, Google Forms, WhatsApp groups, a one-off website…) What's wrong with those?"
-
-  - type: textarea
-    id: data-hooks
-    attributes:
-      label: "Data & integration notes (optional)"
-      description: |
-        If you have thoughts on how this fits the platform: What data would this feature own?
-        Should it react to platform events (e.g. `event.published`, `forms.submitted`) or emit
-        its own (e.g. `judging.round_closed`)? Need-to-know only — the spec phase will nail this down.
-      placeholder: "e.g. Should probably subscribe to forms.submitted to know when a new entry arrives."
-
-  - type: dropdown
-    id: scope
-    attributes:
-      label: "Scope check"
-      description: "How big do you think this is? (A rough gut feeling is fine — it helps us plan rounds.)"
-      options:
-        - "Small — fits inside one module with minimal config"
-        - "Medium — a module with an admin panel and a few settings"
-        - "Large — touches core or needs new platform capabilities"
-        - "No idea — triage will decide"
-
-  - type: checkboxes
-    id: willingness
-    attributes:
-      label: "Your involvement"
-      description: "Nothing here blocks acceptance — but knowing helps us plan."
-      options:
-        - label: "I'm willing to help build this 🙋"
-        - label: "I can provide feedback / test it while it's being built 🧪"
-        - label: "I can write the spec with a maintainer ✍️"
-        - label: "I'm just the idea person this time 💡"
-
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: "Final checklist"
-      options:
-        - label: "I described the real-world workflow, not just the feature."
-          required: true
-        - label: "I searched existing issues and didn't find a duplicate."
-          required: true
-        - label: "I understand this may become a spec built in a future round (not instantly)."
-          required: true
+      label: Proposed write scope and shared files

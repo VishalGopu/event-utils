@@ -1,8 +1,1 @@
 blank_issues_enabled: true
-contact_links:
-  - name: "🤔 Not sure it's a feature? Ask a question"
-    url: https://github.com/recursekmit/event-utils/issues/new
-    about: "Open a blank issue and ask — a maintainer will help you figure out the right category."
-  - name: "📖 Read the architecture first"
-    url: https://github.com/recursekmit/event-utils/blob/main/docs/architecture.md
-    about: "§7 (core boundary) and §10 (feature intake) explain how proposals become modules."
