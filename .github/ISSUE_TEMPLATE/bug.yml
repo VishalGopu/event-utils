@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible defect. Do not disclose vulnerabilities here.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: Include steps, expected behavior, and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and evidence
+      description: Version or commit, relevant logs, screenshots, and checks already run.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Suggested acceptance criteria and affected paths
