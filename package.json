@@ -14,7 +14,9 @@
     "build": "corepack pnpm -r build",
     "db:generate": "corepack pnpm --filter @event-utils/api db:generate",
     "db:migrate": "corepack pnpm --filter @event-utils/api db:migrate",
-    "db:check": "corepack pnpm --filter @event-utils/api db:check"
+    "db:check": "corepack pnpm --filter @event-utils/api db:check",
+    "worker": "corepack pnpm --filter @event-utils/api worker",
+    "worker:check": "corepack pnpm --filter @event-utils/api worker:check"
   },
   "devDependencies": {
     "@eslint/js": "9.25.1",

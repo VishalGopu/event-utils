@@ -1,11 +1,9 @@
 import "reflect-metadata";
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.js";
+import { loadLocalEnvironment } from "./config.js";
 
-const localEnv = fileURLToPath(new URL("../.env", import.meta.url));
-if (existsSync(localEnv)) process.loadEnvFile(localEnv);
+loadLocalEnvironment();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

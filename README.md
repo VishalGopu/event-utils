@@ -1,6 +1,6 @@
 # event-utils
 
-An open-source foundation for a self-hosted hackathon and club-event platform. The intended product serves one institution and multiple events. **Current status:** a Phase 0 scaffold with a placeholder Next.js page, NestJS health and readiness endpoints, and an initial Prisma/PostgreSQL migration. Authentication, event management, registration, judging, and durable jobs are planned, not implemented.
+An open-source foundation for a self-hosted hackathon and club-event platform. The intended product serves one institution and multiple events. **Current status:** a Phase 0 scaffold with a placeholder Next.js page, NestJS health and readiness endpoints, an initial Prisma/PostgreSQL migration, and a PostgreSQL-backed worker entrypoint. Authentication, event management, registration, and judging are planned, not implemented.
 
 The original [architecture draft](docs/architecture.md) records early club-event ideas and ADRs. The [phase-wise implementation plan](PHASE_WISE_IMPLEMENTATION.md) is the proposed delivery sequence. Reconcile differences through an ADR before implementing dependent work.
 
@@ -16,22 +16,23 @@ cp apps/api/.env.example apps/api/.env
 corepack pnpm db:generate
 corepack pnpm db:migrate
 corepack pnpm db:check
+corepack pnpm worker:check
 corepack pnpm dev
 ```
 
-Create a PostgreSQL database named `event_utils` owned by your local project role before migrating. The API reads `apps/api/.env`; do not commit it. `http://localhost:3000` serves the placeholder page, `http://localhost:4000/health` is liveness, and `http://localhost:4000/ready` checks the database. See [local development](INSTRUCTIONS.md) for the current verification record.
+Create a PostgreSQL database named `event_utils` owned by your local project role before migrating. The role must be able to create and migrate the queue's `pgboss` schema. The API and worker read `apps/api/.env`; do not commit it. `http://localhost:3000` serves the placeholder page, `http://localhost:4000/health` is liveness, and `http://localhost:4000/ready` checks the database. Run `corepack pnpm worker` in a separate terminal and stop it with Ctrl-C. See [local development](INSTRUCTIONS.md) for the current verification record.
 
 Checks: `corepack pnpm lint`, `corepack pnpm format:check`, `corepack pnpm typecheck`, `corepack pnpm test`, `corepack pnpm build`.
 
 ## Layout and roadmap
 
 - `apps/web`: Next.js App Router placeholder.
-- `apps/api`: NestJS HTTP entrypoint, Prisma schema and migration, database probe.
+- `apps/api`: NestJS HTTP entrypoint, Prisma schema and migration, pg-boss worker, and database probes.
 - `docs/CONTEXT.md`: task context entry point.
 - `docs/architecture.md`: original architecture and early ADR log.
 - `PHASE_WISE_IMPLEMENTATION.md`: proposed phase gates and domain invariants.
 
-The Prisma `foundation_probe` table verifies the connection only; it is not a domain model. The next Phase 0 increment is the PostgreSQL worker/queue compatibility check. Shared contracts and reusable UI packages will be added when applications actually consume them. Later feature phases remain proposals.
+The Prisma `foundation_probe` table and `phase0-compatibility` queue verify infrastructure only; they are not domain models. pg-boss owns and migrates its isolated `pgboss` schema. The next implementation slice is Phase 1 identity, permissions, configuration, and transactional outbox design. Shared contracts and reusable UI packages will be added when applications actually consume them. Later feature phases remain proposals.
 
 ## Contributing
 

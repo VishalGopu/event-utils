@@ -37,3 +37,4 @@ jobs:
       - run: pnpm build
       - run: pnpm db:migrate
       - run: pnpm db:check
+      - run: pnpm worker:check
